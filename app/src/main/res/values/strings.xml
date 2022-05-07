@@ -1,0 +1,79 @@
+<resources>
+    <!--    <string name="app_name">Restaurants</string>-->
+    <string name="app_name">المطاعم</string>
+
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+
+    <string name="stfErrorMessage">لقد حدث خطأ، رجاء أعد المحاولة لاحقا</string>
+    <string name="stfOfflineMessage">يرجى التحقق من اتصالك</string>
+    <string name="stfEmptyMessage">لا توجد عناصر</string>
+    <string name="stfLoadingMessage">تحميل..</string>
+    <string name="stfButtonText">أعد المحاولة</string>
+
+    <string name="open_wireless">هل تريد فتح إعدادات الإنترنت اللاسلكي؟</string>
+    <string name="no_internet">لا يوجد اتصال بالإنترنت</string>
+    <string name="empty_data">لا توجد بيانات ، يرجى المحاولة مرة أخرى</string>
+    <string name="empty_field">لا يمكن ترك هذا الحقل فارغا</string>
+    <string name="invalid_email">يرجى إدخال البريد الإلكتروني الصحيح</string>
+    <string name="password_not_match">كلمة المرور غير متطابقة</string>
+    <string name="password_less_6_char">يجب ان تكون كلمة المرور 6 احرف او اكبر</string>
+    <string name="back_exit">اضغط مرة أخرى للخروج.</string>
+
+    <string name="email">البريد الالكتروني</string>
+    <string name="forgot_password">هل نسيت كلمة السر</string>
+    <string name="dont_have_account">لا تملك حساب؟ </string>
+    <string name="register_now">سجل الان</string>
+    <string name="register">تسجيل جديد</string>
+    <string name="password">كلمة المرور</string>
+    <string name="login">تسجيل الدخول</string>
+
+    <string name="full_name">الاسم الكامل</string>
+    <string name="f_name">الاسم الأول</string>
+    <string name="l_name">اسم العائلة</string>
+    <string name="phone">الهاتف</string>
+    <string name="restaurants">المطاعم</string>
+
+    <string name="meals">الوجبات</string>
+    <string name="appetizers">المقبلات</string>
+    <string name="drinks">المشروبات</string>
+    <string name="candy">الحلويات</string>
+
+    <string name="cart">السلة</string>
+    <string name="order">الطلبات</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="logout">تسجيل خروج</string>
+
+    <string name="successfully_add_cart">تمت الإضافة إلى سلة التسوق بنجاح</string>
+    <string name="already_in_cart">المنتج موجود بالفعل في سلة التسوق</string>
+    <string name="updated_product_to_cart">تم تحديث المنتج في السلة</string>
+    <string name="remove_from_cart">تمت إزالة المنتج من سلة التسوق</string>
+    <string name="not_currently_in_cart">المنتج ليس في سلة التسوق حاليا</string>
+
+    <string name="successfully_add_order">تم ارسال الطلب بنجاح</string>
+
+    <string name="order_number">رقم الطلب</string>
+    <string name="price">السعر</string>
+    <string name="order_status">الطلب حالة</string>
+    <string name="show_order">عرض الطلب</string>
+
+    <string name="count">الكمية :</string>
+
+    <string name="bill_summary">ملخص الفاتورة</string>
+    <string name="quantity">الكمية</string>
+    <string name="total">المجموع</string>
+    <string name="shipping">الشحن</string>
+    <string name="total_order">مجموع الطلبية</string>
+    <string name="send_order">ارسال الطلب</string>
+    <string name="checkout">الدفع</string>
+    <string name="payment_method">طريقة الدفع</string>
+    <string name="when_recieving">الدفع عند الاستلام</string>
+    <string name="credit_card">الدفع عن طريق بطاقة الائتمان</string>
+    <string name="jawwal_pay">الدفع عن طريق Jawwal Pay</string>
+    <string name="coin_shekel">₪</string>
+    <string name="update">تعديل</string>
+    <string name="delivery_method">طريقة التوصيل</string>
+    <string name="delivery">التوصيل عن طريق دليفري</string>
+    <string name="receipt">الاستلام من المطعم</string>
+
+</resources>
