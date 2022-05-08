@@ -1,5 +1,6 @@
 package com.restaurant.controller.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,8 +70,10 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsViewHol
             binding = CustomMealsBinding.bind(itemView);
         }
 
+        @SuppressLint("SetTextI18n")
         private void bind(Meals model) {
             binding.name.setText(model.getName());
+            binding.ingredients.setText(model.getIngredients());
             binding.price.setText(model.getPrice()+ " " + mContext.getString(R.string.coin_shekel));
             binding.image.setImageResource(model.getImage());
         }
