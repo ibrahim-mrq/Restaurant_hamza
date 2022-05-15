@@ -119,6 +119,9 @@ public class CartFragment extends Fragment {
             update(list);
             MainActivity.updateOrders();
             MainActivity.updateCarts();
+            if (list.isEmpty()) {
+                MainActivity.replaceFragment(new RestaurantsFragment(), R.string.restaurants);
+            }
         });
     }
 

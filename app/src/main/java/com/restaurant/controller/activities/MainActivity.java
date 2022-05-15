@@ -2,6 +2,7 @@ package com.restaurant.controller.activities;
 
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -71,9 +72,9 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    public void replaceFragment(Fragment fragment, @StringRes int title) {
-        binding.appbar.tvTool.setText(getResources().getText(title));
-        FragmentManager manager = getSupportFragmentManager();
+    public static void replaceFragment(Fragment fragment, @StringRes int title) {
+        binding.appbar.tvTool.setText(context.getResources().getText(title));
+        FragmentManager manager = ((FragmentActivity) context).getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.main_frame, fragment);
         transaction.commit();

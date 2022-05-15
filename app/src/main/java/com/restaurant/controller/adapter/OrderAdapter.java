@@ -51,7 +51,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         return (list != null ? list.size() : 0);
     }
 
-     class OrderViewHolder extends RecyclerView.ViewHolder {
+    class OrderViewHolder extends RecyclerView.ViewHolder {
 
         CustomOrderBinding binding;
 
@@ -65,7 +65,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             binding.tvDate.setText(model.getDate());
             binding.tvOrderNumber.setText("#OTB0005");
             binding.tvStats.setText("تمت بنجاح");
-            binding.tvPrice.setText(model.getPrice() + " " + mContext.getString(R.string.coin_shekel));
+            binding.tvPrice.setText(model.getPrice());
         }
     }
 

@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-
+        <activity android:name=".controller.activities.MealDetailActivity"></activity>
         <activity
             android:name=".controller.activities.SplashActivity"
             android:exported="true">
@@ -37,7 +37,6 @@
         <activity
             android:name=".controller.activities.RestaurantDetailActivity"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-
     </application>
 
 </manifest>

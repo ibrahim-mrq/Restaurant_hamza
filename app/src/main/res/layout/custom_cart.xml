@@ -8,7 +8,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="5dp"
     android:orientation="horizontal"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/background"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp">
 
@@ -145,20 +145,23 @@
                         android:textColor="@color/white"
                         tools:ignore="HardcodedText" />
 
-                    <ImageView
-                        android:id="@+id/img_buy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:background="@drawable/shape_orange"
-                        android:padding="7dp"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_cart_small"
-                        tools:ignore="ContentDescription" />
-
                 </LinearLayout>
 
             </RelativeLayout>
+
+            <AutoCompleteTextView
+                android:id="@+id/et_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_white"
+                android:fontFamily="@font/font_regular"
+                android:gravity="top"
+                android:hint="@string/notes"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:padding="5dp"
+                android:textSize="14sp" />
 
         </LinearLayout>
 

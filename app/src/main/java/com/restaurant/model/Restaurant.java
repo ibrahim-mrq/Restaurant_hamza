@@ -9,6 +9,9 @@ public class Restaurant implements Serializable {
 
     private String id;
     private String name;
+    private String address;
+    private String phone;
+    private float rate;
     private int image;
     private ArrayList<Meals> meals;        // وجبات
     private ArrayList<Meals> appetizers;  // مقبلات
@@ -18,12 +21,30 @@ public class Restaurant implements Serializable {
     public Restaurant() {
     }
 
-    public Restaurant(String id, String name, int image,
-                      ArrayList<Meals> meals, ArrayList<Meals> appetizers,
-                      ArrayList<Meals> drinks, ArrayList<Meals> candy
+//        public Restaurant(String id, String name, int image,
+//                      ArrayList<Meals> meals, ArrayList<Meals> appetizers,
+//                      ArrayList<Meals> drinks, ArrayList<Meals> candy
+//    ) {
+//        this.id = id;
+//        this.name = name;
+//        this.image = image;
+//        this.meals = meals;
+//        this.appetizers = appetizers;
+//        this.drinks = drinks;
+//        this.candy = candy;
+//    }
+
+    public Restaurant(String id, String name, String address, String phone, float rate, int image,
+                      ArrayList<Meals> meals,
+                      ArrayList<Meals> appetizers,
+                      ArrayList<Meals> drinks,
+                      ArrayList<Meals> candy
     ) {
         this.id = id;
         this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.rate = rate;
         this.image = image;
         this.meals = meals;
         this.appetizers = appetizers;
@@ -37,6 +58,9 @@ public class Restaurant implements Serializable {
         return "Restaurant{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", rate=" + rate +
                 ", image=" + image +
                 ", meals=" + meals +
                 ", appetizers=" + appetizers +
@@ -59,6 +83,30 @@ public class Restaurant implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public float getRate() {
+        return rate;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
     }
 
     public int getImage() {

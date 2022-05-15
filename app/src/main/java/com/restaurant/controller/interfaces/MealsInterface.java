@@ -8,5 +8,4 @@ public interface MealsInterface {
 
     void onImageClick( ImageView imageView);
 
-    void addTOCart(Meals model);
 }

@@ -2,6 +2,7 @@ package com.restaurant.controller.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.restaurant.R;
+import com.restaurant.controller.activities.MealDetailActivity;
 import com.restaurant.controller.interfaces.MealsInterface;
 import com.restaurant.databinding.CustomMealsBinding;
+import com.restaurant.helpers.Constants;
 import com.restaurant.model.Meals;
 
 import java.util.ArrayList;
@@ -51,8 +54,10 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsViewHol
             mealsInterface.onImageClick(holder.binding.image);
         });
 
-        holder.binding.cart.setOnClickListener(view -> {
-            mealsInterface.addTOCart(model);
+        holder.itemView.setOnClickListener(view -> {
+            mContext.startActivity(new Intent(mContext, MealDetailActivity.class)
+                    .putExtra(Constants.TYPE_MODEL, model)
+            );
         });
     }
 
@@ -61,7 +66,7 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsViewHol
         return (list != null ? list.size() : 0);
     }
 
-     class MealsViewHolder extends RecyclerView.ViewHolder {
+    class MealsViewHolder extends RecyclerView.ViewHolder {
 
         CustomMealsBinding binding;
 
@@ -73,8 +78,8 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsViewHol
         @SuppressLint("SetTextI18n")
         private void bind(Meals model) {
             binding.name.setText(model.getName());
-            binding.ingredients.setText(model.getIngredients());
-            binding.price.setText(model.getPrice()+ " " + mContext.getString(R.string.coin_shekel));
+//            binding.ingredients.setText(model.getIngredients());
+            binding.price.setText(model.getPrice() + " " + mContext.getString(R.string.coin_shekel));
             binding.image.setImageResource(model.getImage());
         }
     }
