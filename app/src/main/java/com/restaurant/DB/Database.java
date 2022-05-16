@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class Database extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "Restaurant.db";
-    public static final int DB_VERSION = 3;
+    public static final int DB_VERSION = 4;
 
     /* TODO : >> Cart DB */
     public static final String CART_TB_NAME = "cart";
@@ -43,6 +43,10 @@ public class Database extends SQLiteOpenHelper {
     public static final String USER_COLUMN_PHONE = "phone";
     public static final String USER_COLUMN_PASSWORD = "password";
 
+    public static final String USER_COLUMN_CITY = "city";
+    public static final String USER_COLUMN_ADDRESS = "address";
+    public static final String USER_COLUMN_NEAREST = "nearest";
+
     public Database(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -55,6 +59,9 @@ public class Database extends SQLiteOpenHelper {
                 + USER_COLUMN_LAST_NAME + " TEXT,"
                 + USER_COLUMN_EMAIL + " TEXT,"
                 + USER_COLUMN_PHONE + " TEXT,"
+                + USER_COLUMN_CITY + " TEXT,"
+                + USER_COLUMN_ADDRESS + " TEXT,"
+                + USER_COLUMN_NEAREST + " TEXT,"
                 + USER_COLUMN_PASSWORD + " TEXT )");
 
         db.execSQL("CREATE TABLE " + CART_TB_NAME + " " + "("

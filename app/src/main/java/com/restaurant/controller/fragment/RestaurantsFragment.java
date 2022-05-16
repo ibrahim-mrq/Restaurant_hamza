@@ -6,13 +6,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.restaurant.R;
 import com.restaurant.controller.adapter.RestaurantAdapter;
+import com.restaurant.controller.adapter.SliderImageAdapter;
 import com.restaurant.databinding.FragmentRestaurantsBinding;
 import com.restaurant.helpers.BaseFragment;
 import com.restaurant.model.Meals;
@@ -22,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class RestaurantsFragment extends BaseFragment {
 
     public RestaurantsFragment() {
         // Required empty public constructor
@@ -30,6 +35,10 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
 
     FragmentRestaurantsBinding binding;
     RestaurantAdapter adapter;
+
+    SliderImageAdapter sliderImageAdapter;
+    ArrayList<Integer> sliderList = new ArrayList<>();
+    Handler handler = new Handler();
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
@@ -46,15 +55,57 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
     }
 
     private void initView() {
-        binding.include.swipeToRefresh.setOnRefreshListener(this);
-        binding.include.swipeToRefresh.setRefreshing(false);
 
         adapter = new RestaurantAdapter(getActivity());
-        binding.include.recyclerView.setAdapter(adapter);
-        binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.include.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.recyclerView.setHasFixedSize(true);
         addData();
+        viewPager();
     }
+
+    private void viewPager() {
+        sliderList.clear();
+        sliderList.add(R.drawable.borger);
+        sliderList.add(R.drawable.coffee);
+        sliderList.add(R.drawable.nescafe);
+        sliderList.add(R.drawable.pancake);
+
+        sliderImageAdapter = new SliderImageAdapter(requireActivity());
+        sliderImageAdapter.setList(sliderList);
+        binding.viewpager.setAdapter(sliderImageAdapter);
+        binding.viewpager.setClipToPadding(false);
+        binding.viewpager.setClipChildren(false);
+        binding.viewpager.setOffscreenPageLimit(3);
+//        binding.indicator.setViewPager(binding.viewpager);
+        binding.viewpager.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
+        CompositePageTransformer transformer = new CompositePageTransformer();
+        transformer.addTransformer(new MarginPageTransformer(30));
+        transformer.addTransformer((page, position) -> {
+            float v = 1 - Math.abs(position);
+            page.setScaleY(0.75f + v * 0.15f);
+        });
+        binding.viewpager.setPageTransformer(transformer);
+        binding.viewpager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                handler.removeCallbacks(runnable);
+                handler.postDelayed(runnable, 3000);
+            }
+        });
+
+    }
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if (binding.viewpager.getCurrentItem() == sliderImageAdapter.getItemCount() - 1) {
+                binding.viewpager.setCurrentItem(0, true);
+            } else {
+                binding.viewpager.setCurrentItem(binding.viewpager.getCurrentItem() + 1, true);
+            }
+        }
+    };
 
     private void addData() {
         ArrayList<Restaurant> list = new ArrayList<>();
@@ -161,7 +212,7 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
                 R.drawable.lokimat));
 
         return new Restaurant("1", "مطعم بيسترو عرفات",
-                "غزة - شارع النصر - مقابل مخبز العائلات \n بيسترو عرفات .. للوجبات الشرقية و الغربية",
+                "غزة - شارع النصر - مقابل مخبز العائلات",
                 "0593221010",
                 2f,
                 R.drawable.arafat,
@@ -241,11 +292,11 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
 
         // TODO : candy
         ArrayList<Meals> candy = new ArrayList<>();
-        candy.add(new Meals(36, "كريب نوتيلا",  "نوتيلا ، كريب", "10",
+        candy.add(new Meals(36, "كريب نوتيلا", "نوتيلا ، كريب", "10",
                 "5 دقائق",
                 4f,
                 R.drawable.crepe));
-        candy.add(new Meals(37, "بان كيك",  "كيك ، ماء ، سكر", "12",
+        candy.add(new Meals(37, "بان كيك", "كيك ، ماء ، سكر", "12",
                 "5 دقائق",
                 4f,
                 R.drawable.pancake));
@@ -343,11 +394,11 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
 
         // TODO : candy
         ArrayList<Meals> candy = new ArrayList<>();
-        candy.add(new Meals(56, "كريب نوتيلا",  "نوتيلا ، كريب", "10",
+        candy.add(new Meals(56, "كريب نوتيلا", "نوتيلا ، كريب", "10",
                 "5 دقائق",
                 4f,
                 R.drawable.crepe));
-        candy.add(new Meals(57, "بان كيك",  "كيك ، ماء ، سكر", "12",
+        candy.add(new Meals(57, "بان كيك", "كيك ، ماء ، سكر", "12",
                 "5 دقائق",
                 4f,
                 R.drawable.pancake));
@@ -365,8 +416,7 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
                 R.drawable.lokimat));
 
         return new Restaurant("3", "مطعم اياد",
-                "مطعم شاورما إياد لأشهى وأطيب مأكولات الشاورما\n" +
-                        "العنوان :غزة - غرب مفترق الاتصالات - بجوار بيت الصحافة .",
+                "غزة - غرب مفترق الاتصالات - بجوار بيت الصحافة .",
                 "0599569844",
                 4f,
                 R.drawable.eyad,
@@ -446,11 +496,11 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
 
         // TODO : candy
         ArrayList<Meals> candy = new ArrayList<>();
-        candy.add(new Meals(76, "كريب نوتيلا",  "نوتيلا ، كريب", "10",
+        candy.add(new Meals(76, "كريب نوتيلا", "نوتيلا ، كريب", "10",
                 "5 دقائق",
                 4f,
                 R.drawable.crepe));
-        candy.add(new Meals(77, "بان كيك",  "كيك ، ماء ، سكر", "12",
+        candy.add(new Meals(77, "بان كيك", "كيك ، ماء ، سكر", "12",
                 "5 دقائق",
                 4f,
                 R.drawable.pancake));
@@ -458,7 +508,7 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
                 "5 دقائق",
                 4f,
                 R.drawable.konafa_nutella));
-        candy.add(new Meals(79, "سلطة فواكه","فواكه ، فراولة ، موز ، تفاح ، اناناس", "15",
+        candy.add(new Meals(79, "سلطة فواكه", "فواكه ، فراولة ، موز ، تفاح ، اناناس", "15",
                 "5 دقائق",
                 4f,
                 R.drawable.fruit_salad));
@@ -468,8 +518,7 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
                 R.drawable.lokimat));
 
         return new Restaurant("4", "مطعم فهد",
-                "\uD83D\uDCCDالفرع الأول : غزة - شارع الشهداء - خلف الاتصالات - بجوار الفدان الأخضر\n" +
-                        "\uD83D\uDCCDالفرع الثاني : غزة - دوار أنصار - عمارة كريم 1",
+                "غزة - شارع الشهداء - خلف الاتصالات - بجوار الفدان الأخضر",
                 "0595678080",
                 5f,
                 R.drawable.fahad,
@@ -549,11 +598,11 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
 
         // TODO : candy
         ArrayList<Meals> candy = new ArrayList<>();
-        candy.add(new Meals(95, "كريب نوتيلا",  "نوتيلا ، كريب", "10",
+        candy.add(new Meals(95, "كريب نوتيلا", "نوتيلا ، كريب", "10",
                 "5 دقائق",
                 4f,
                 R.drawable.crepe));
-        candy.add(new Meals(96, "بان كيك",  "كيك ، ماء ، سكر", "12",
+        candy.add(new Meals(96, "بان كيك", "كيك ، ماء ، سكر", "12",
                 "5 دقائق",
                 4f,
                 R.drawable.pancake));
@@ -571,18 +620,11 @@ public class RestaurantsFragment extends BaseFragment implements SwipeRefreshLay
                 R.drawable.lokimat));
 
         return new Restaurant("5", "مطعم معاذ",
-                "غزة جنوب دوار انصار \n شاورما دجاج شاورما عجل فينو سندوشات فراشيح عادية\n" +
-                        "فراشيح سوري يوجد لدينا خدمه التوصيل الي المنزل\n" +
-                        "لسنا الوحيدون ولكننا مميزون",
+                "غزة جنوب دوار انصار",
                 "0592121031",
                 3f,
                 R.drawable.moaaz,
                 meals, appetizers, drinks, candy);
-    }
-
-    @Override
-    public void onRefresh() {
-        binding.include.swipeToRefresh.setRefreshing(false);
     }
 
 }

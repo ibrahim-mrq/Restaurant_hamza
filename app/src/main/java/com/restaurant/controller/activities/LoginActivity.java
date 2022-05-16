@@ -52,7 +52,6 @@ public class LoginActivity extends BaseActivity {
                 Hawk.put(Constants.IS_LOGIN, true);
                 Hawk.put(Constants.USER, db.getUser(getText(binding.etEmail)));
                 Hawk.put(Constants.USER_ID, db.getUser(getText(binding.etEmail)).getId());
-                Log.e("response", "id = " + db.getUser(getText(binding.etEmail)).getId());
                 db.close();
                 new Handler().postDelayed(() -> {
                     enableElements(true);

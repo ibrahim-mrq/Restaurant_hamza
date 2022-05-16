@@ -21,6 +21,12 @@
         <item name="android:layoutDirection">rtl</item>
     </style>
 
+
+    <!-- TODO : Image corner 10  -->
+    <style name="shapeCorner_10" parent="">
+        <item name="cornerSize">10%</item>
+    </style>
+
     <!--  TODO : circleImageView   -->
     <style name="circleImageView" parent="">
         <item name="cornerFamily">rounded</item>

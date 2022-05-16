@@ -13,35 +13,60 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
             android:scaleType="fitXY"
+            app:shapeAppearanceOverlay="@style/circleImageView"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorAccent" />
-
-        <TextView
-            android:id="@+id/name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/font_bold"
-            android:paddingHorizontal="15dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="@color/text"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="TextView" />
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_bold"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="دجاج بروست" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_regular"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/text"
+                tools:text="دجاج بروست" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="3"
+                android:stepSize="1" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

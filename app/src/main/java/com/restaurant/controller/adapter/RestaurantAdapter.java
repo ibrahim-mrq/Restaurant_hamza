@@ -66,6 +66,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
         private void bind(Restaurant model) {
             binding.name.setText(model.getName());
+            binding.address.setText(model.getAddress());
+            binding.ratingBar.setRating(model.getRate());
             binding.image.setImageResource(model.getImage());
         }
     }

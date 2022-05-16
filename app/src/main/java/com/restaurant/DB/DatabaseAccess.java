@@ -71,7 +71,7 @@ public class DatabaseAccess {
                 int quantity = c.getInt(c.getColumnIndex(Database.CART_COLUMN_QUANTITY));
                 int userId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_USER_ID));
                 int productId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_PRODUCT_ID));
-                cart = new Cart(ids, name,ingredients, price, image, quantity, userId, productId);
+                cart = new Cart(ids, name, ingredients, price, image, quantity, userId, productId);
             } while (c.moveToNext());
             c.close();
         }
@@ -108,7 +108,7 @@ public class DatabaseAccess {
                 int quantity = c.getInt(c.getColumnIndex(Database.CART_COLUMN_QUANTITY));
                 int userId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_USER_ID));
                 int productId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_PRODUCT_ID));
-                Cart model   = new Cart(id, name,ingredients, price, image, quantity, userId, productId);
+                Cart model = new Cart(id, name, ingredients, price, image, quantity, userId, productId);
                 models.add(model);
             } while (c.moveToNext());
             c.close();
@@ -130,7 +130,7 @@ public class DatabaseAccess {
                 int quantity = c.getInt(c.getColumnIndex(Database.CART_COLUMN_QUANTITY));
                 int userId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_USER_ID));
                 int productId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_PRODUCT_ID));
-                Cart model   = new Cart(id, name,ingredients, price, image, quantity, userId, productId);
+                Cart model = new Cart(id, name, ingredients, price, image, quantity, userId, productId);
                 models.add(model);
             }
             while (c.moveToNext());
@@ -262,7 +262,12 @@ public class DatabaseAccess {
                 String password = c.getString(c.getColumnIndex(Database.USER_COLUMN_PASSWORD));
                 String emails = c.getString(c.getColumnIndex(Database.USER_COLUMN_EMAIL));
                 String phone = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
-                user = new User(id, f_name, l_name, emails, phone, password);
+
+                String city = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
+                String address = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
+                String nearest = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
+
+                user = new User(id, f_name, l_name, emails, phone, password, city, address, nearest);
             } while (c.moveToNext());
             c.close();
         }

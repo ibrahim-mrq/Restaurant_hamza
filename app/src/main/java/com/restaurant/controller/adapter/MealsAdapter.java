@@ -78,7 +78,7 @@ public class MealsAdapter extends RecyclerView.Adapter<MealsAdapter.MealsViewHol
         @SuppressLint("SetTextI18n")
         private void bind(Meals model) {
             binding.name.setText(model.getName());
-//            binding.ingredients.setText(model.getIngredients());
+            binding.ratingBar.setRating(model.getRate());
             binding.price.setText(model.getPrice() + " " + mContext.getString(R.string.coin_shekel));
             binding.image.setImageResource(model.getImage());
         }

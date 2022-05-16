@@ -141,7 +141,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
             android:fontFamily="@font/font_regular"
             android:hint="@string/password"
             app:boxStrokeColor="@color/colorAccent"
@@ -157,6 +156,90 @@
                 android:enabled="false"
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPassword"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_city"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font_regular"
+            android:hint="@string/city"
+            app:boxStrokeColor="@color/colorAccent"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/colorAccent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:fontFamily="@font/font_regular"
+                android:inputType="textPersonName"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_address"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font_regular"
+            android:hint="@string/addresss"
+            app:boxStrokeColor="@color/colorAccent"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/colorAccent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:fontFamily="@font/font_regular"
+                android:inputType="textPersonName"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_nearest"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font_regular"
+            android:hint="@string/nearest"
+            app:boxStrokeColor="@color/colorAccent"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/colorAccent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nearest"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:fontFamily="@font/font_regular"
+                android:inputType="textPersonName"
                 android:textAlignment="textStart"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"

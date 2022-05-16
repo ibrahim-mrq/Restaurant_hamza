@@ -42,6 +42,9 @@ public class RegisterActivity extends BaseActivity {
                 && isNotEmpty(binding.etFName, binding.tvFName)
                 && isNotEmpty(binding.etLName, binding.tvLName)
                 && isNotEmpty(binding.etPhone, binding.tvPhone)
+//                && isNotEmpty(binding.etCity, binding.tvCity)
+//                && isNotEmpty(binding.etAddress, binding.tvAddress)
+//                && isNotEmpty(binding.etNearest, binding.tvNearest)
         ) {
             enableElements(false);
             DatabaseAccess db = DatabaseAccess.getInstance(this);
@@ -57,6 +60,10 @@ public class RegisterActivity extends BaseActivity {
                 user.setLastName(getText(binding.etLName));
                 user.setPassword(getText(binding.etPassword));
                 user.setPhone(getText(binding.etPhone));
+                user.setCity(getText(binding.etCity));
+                user.setAddress(getText(binding.etAddress));
+                user.setNearest(getText(binding.etNearest));
+
                 db.insertUser(user);
                 Hawk.put(Constants.IS_LOGIN, true);
                 Hawk.put(Constants.USER, db.getUser(getText(binding.etEmail)));

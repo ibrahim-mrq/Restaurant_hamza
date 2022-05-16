@@ -10,29 +10,48 @@ public class User {
     private String email;
     private String phone;
     private String password;
+    private String city;
+    private String address;
+    private String nearest;
 
     public User() {
     }
+//
+//    public User(int id, String firstName, String lastName, String email, String phone, String password) {
+//        this.id = id;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.phone = phone;
+//        this.password = password;
+//    }
 
-    public User(int id, String firstName, String lastName, String email, String phone, String password) {
+    public User(int id, String firstName, String lastName, String email, String phone,
+                String password, String city, String address, String nearest) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.city = city;
+        this.address = address;
+        this.nearest = nearest;
     }
 
     @NotNull
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
+                ", city='" + city + '\'' +
+                ", address='" + address + '\'' +
+                ", nearest='" + nearest + '\'' +
                 '}';
     }
 
@@ -82,5 +101,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getNearest() {
+        return nearest;
+    }
+
+    public void setNearest(String nearest) {
+        this.nearest = nearest;
     }
 }
