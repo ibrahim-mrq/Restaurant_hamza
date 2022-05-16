@@ -9,34 +9,30 @@ public class User {
     private String lastName;
     private String email;
     private String phone;
+    private String phone2;
     private String password;
-    private String city;
-    private String address;
-    private String nearest;
+    private String governorate;
+    private String neighborhood;
+    private String houseNumber;
+    private String navigational;
 
     public User() {
     }
-//
-//    public User(int id, String firstName, String lastName, String email, String phone, String password) {
-//        this.id = id;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.email = email;
-//        this.phone = phone;
-//        this.password = password;
-//    }
 
     public User(int id, String firstName, String lastName, String email, String phone,
-                String password, String city, String address, String nearest) {
+                String phone2, String password, String governorate, String neighborhood,
+                String houseNumber, String navigational) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.phone2 = phone2;
         this.password = password;
-        this.city = city;
-        this.address = address;
-        this.nearest = nearest;
+        this.governorate = governorate;
+        this.neighborhood = neighborhood;
+        this.houseNumber = houseNumber;
+        this.navigational = navigational;
     }
 
     @NotNull
@@ -48,10 +44,12 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", phone2='" + phone2 + '\'' +
                 ", password='" + password + '\'' +
-                ", city='" + city + '\'' +
-                ", address='" + address + '\'' +
-                ", nearest='" + nearest + '\'' +
+                ", governorate='" + governorate + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", navigational='" + navigational + '\'' +
                 '}';
     }
 
@@ -103,27 +101,43 @@ public class User {
         this.password = password;
     }
 
-    public String getCity() {
-        return city;
+    public String getPhone2() {
+        return phone2;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setPhone2(String phone2) {
+        this.phone2 = phone2;
     }
 
-    public String getAddress() {
-        return address;
+    public String getGovernorate() {
+        return governorate;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setGovernorate(String governorate) {
+        this.governorate = governorate;
     }
 
-    public String getNearest() {
-        return nearest;
+    public String getNeighborhood() {
+        return neighborhood;
     }
 
-    public void setNearest(String nearest) {
-        this.nearest = nearest;
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public String getNavigational() {
+        return navigational;
+    }
+
+    public void setNavigational(String navigational) {
+        this.navigational = navigational;
     }
 }

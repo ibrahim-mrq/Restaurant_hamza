@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +52,9 @@ public class OrderFragment extends Fragment {
         db = DatabaseAccess.getInstance(getActivity());
 
         adapter = new OrderAdapter(requireActivity());
-        binding.include.recyclerView.setHasFixedSize(true);
-        binding.include.recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        binding.include.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.recyclerView.setAdapter(adapter);
         initOrder();
     }
 
@@ -63,10 +64,12 @@ public class OrderFragment extends Fragment {
         list = db.getAllOrderByUserId(Hawk.get(Constants.USER_ID, 1));
         db.close();
         if (list.isEmpty()) {
+            Log.e("response", "initOrder: " + list.size());
             binding.statefulLayout.showEmpty();
         } else {
             binding.statefulLayout.showContent();
             adapter.setList(list);
+            Log.e("response", "initOrder: else " + list.size());
         }
     }
 }

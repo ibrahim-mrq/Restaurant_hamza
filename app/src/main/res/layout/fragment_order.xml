@@ -7,8 +7,14 @@
     android:background="@color/background"
     tools:context=".controller.fragment.OrderFragment">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/include_recycler_view" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="4dp"
+        android:overScrollMode="never"
+        tools:itemCount="5"
+        tools:listitem="@layout/custom_order" />
+
 
 </com.gturedi.views.StatefulLayout>

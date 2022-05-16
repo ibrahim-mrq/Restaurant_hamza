@@ -5,8 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +16,6 @@ import com.restaurant.helpers.Constants;
 import com.restaurant.model.User;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 public class ProfileFragment extends BaseFragment {
 
@@ -59,9 +47,11 @@ public class ProfileFragment extends BaseFragment {
         binding.etPhone.setText(user.getPhone());
         binding.etPassword.setText(user.getPassword());
 
-        binding.etCity.setText(user.getCity());
-        binding.etAddress.setText(user.getAddress());
-        binding.etNearest.setText(user.getNearest());
+        binding.etPhone2.setText(user.getPhone2());
+        binding.etGovernorate.setText(user.getGovernorate());
+        binding.etNeighborhood.setText(user.getNeighborhood());
+        binding.etNavigationalMark.setText(user.getNavigational());
+        binding.etHouseNumber.setText(user.getHouseNumber());
 
 
         binding.btnUpdate.setOnClickListener(view -> {

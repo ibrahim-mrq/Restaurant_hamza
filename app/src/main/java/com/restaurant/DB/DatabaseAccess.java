@@ -224,6 +224,13 @@ public class DatabaseAccess {
         cv.put(Database.USER_COLUMN_EMAIL, model.getEmail());
         cv.put(Database.USER_COLUMN_PASSWORD, model.getPassword());
         cv.put(Database.USER_COLUMN_PHONE, model.getPhone());
+
+        cv.put(Database.USER_COLUMN_PHONE_2, model.getPhone2());
+        cv.put(Database.USER_COLUMN_GOVERNORATE, model.getGovernorate());
+        cv.put(Database.USER_COLUMN_NEIGHBORHOOD, model.getNeighborhood());
+        cv.put(Database.USER_COLUMN_HOUSE_NUMBER, model.getHouseNumber());
+        cv.put(Database.USER_COLUMN_NAVIGATIONAL, model.getNavigational());
+
         database.insert(Database.USER_TB_NAME, null, cv);
     }
 
@@ -234,6 +241,13 @@ public class DatabaseAccess {
         values.put(Database.USER_COLUMN_EMAIL, model.getEmail());
         values.put(Database.USER_COLUMN_PASSWORD, model.getPassword());
         values.put(Database.USER_COLUMN_PHONE, model.getPhone());
+
+        values.put(Database.USER_COLUMN_PHONE_2, model.getPhone2());
+        values.put(Database.USER_COLUMN_GOVERNORATE, model.getGovernorate());
+        values.put(Database.USER_COLUMN_NEIGHBORHOOD, model.getNeighborhood());
+        values.put(Database.USER_COLUMN_HOUSE_NUMBER, model.getHouseNumber());
+        values.put(Database.USER_COLUMN_NAVIGATIONAL, model.getNavigational());
+
         String[] args = {String.valueOf(model.getId())};
         int res = database.update(Database.USER_TB_NAME, values, "id=?", args);
         return res > 0;
@@ -263,11 +277,13 @@ public class DatabaseAccess {
                 String emails = c.getString(c.getColumnIndex(Database.USER_COLUMN_EMAIL));
                 String phone = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
 
-                String city = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
-                String address = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
-                String nearest = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
+                String phone2 = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE_2));
+                String governorate = c.getString(c.getColumnIndex(Database.USER_COLUMN_GOVERNORATE));
+                String neighborhood = c.getString(c.getColumnIndex(Database.USER_COLUMN_NEIGHBORHOOD));
+                String houseNumber = c.getString(c.getColumnIndex(Database.USER_COLUMN_HOUSE_NUMBER));
+                String navigational = c.getString(c.getColumnIndex(Database.USER_COLUMN_NAVIGATIONAL));
 
-                user = new User(id, f_name, l_name, emails, phone, password, city, address, nearest);
+                user = new User(id, f_name, l_name, emails, phone, phone2, password, governorate, neighborhood, houseNumber, navigational);
             } while (c.moveToNext());
             c.close();
         }

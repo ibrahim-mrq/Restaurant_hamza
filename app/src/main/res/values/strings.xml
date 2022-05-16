@@ -26,12 +26,14 @@
     <string name="register_now">سجل الان</string>
     <string name="register">تسجيل جديد</string>
     <string name="password">كلمة المرور</string>
+    <string name="re_password">ناكيد كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
 
     <string name="full_name">الاسم الكامل</string>
     <string name="f_name">الاسم الأول</string>
     <string name="l_name">اسم العائلة</string>
     <string name="phone">الهاتف</string>
+    <string name="phone2">الهاتف الثاني</string>
     <string name="restaurants">المطاعم</string>
 
     <string name="meals">الوجبات</string>
@@ -84,7 +86,10 @@
     <string name="ingredients">مكونات الوجبة</string>
     <string name="notes">ملاحظات</string>
     <string name="city">المدينة</string>
-    <string name="addresss">المنطقة</string>
-    <string name="nearest">اقرب معلم</string>
+
+    <string name="navigational_mark">اقرب معلم</string>
+    <string name="governorate">المحافظة</string>
+    <string name="neighborhood">الحيّ</string>
+    <string name="houseNumber">رقم هاتف البيت</string>
 
 </resources>

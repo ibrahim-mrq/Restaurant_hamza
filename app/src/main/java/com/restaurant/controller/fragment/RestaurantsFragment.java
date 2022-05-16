@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class RestaurantsFragment extends BaseFragment {
+public class RestaurantsFragment extends BaseFragment implements SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
     public RestaurantsFragment() {
         // Required empty public constructor
@@ -56,6 +56,8 @@ public class RestaurantsFragment extends BaseFragment {
 
     private void initView() {
 
+        binding.search.setOnQueryTextListener(this);
+        binding.search.setOnCloseListener(this);
         adapter = new RestaurantAdapter(getActivity());
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -106,6 +108,47 @@ public class RestaurantsFragment extends BaseFragment {
             }
         }
     };
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        if (!query.isEmpty()) {
+            if (adapter.getList().isEmpty()) {
+                binding.statefulLayout.showEmpty();
+            } else {
+                binding.statefulLayout.showContent();
+            }
+            adapter.getFilter().filter(query);
+        } else {
+            binding.statefulLayout.showContent();
+            addData();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String query) {
+        if (!query.isEmpty()) {
+            if (adapter.getList().isEmpty()) {
+                binding.statefulLayout.showEmpty();
+            } else {
+                binding.statefulLayout.showContent();
+            }
+            adapter.getFilter().filter(query);
+        } else {
+            binding.statefulLayout.showContent();
+            addData();
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onClose() {
+        binding.statefulLayout.showContent();
+        addData();
+        return true;
+    }
 
     private void addData() {
         ArrayList<Restaurant> list = new ArrayList<>();

@@ -42,9 +42,11 @@ public class RegisterActivity extends BaseActivity {
                 && isNotEmpty(binding.etFName, binding.tvFName)
                 && isNotEmpty(binding.etLName, binding.tvLName)
                 && isNotEmpty(binding.etPhone, binding.tvPhone)
-//                && isNotEmpty(binding.etCity, binding.tvCity)
-//                && isNotEmpty(binding.etAddress, binding.tvAddress)
-//                && isNotEmpty(binding.etNearest, binding.tvNearest)
+//                && isNotEmpty(binding.etPhone2, binding.tvPhone2)
+                && isNotEmpty(binding.etGovernorate, binding.tvGovernorate)
+                && isNotEmpty(binding.etNeighborhood, binding.tvNeighborhood)
+//                && isNotEmpty(binding.etHouseNumber, binding.tvHouseNumber)
+//                && isNotEmpty(binding.etNavigationalMark, binding.tvNavigationalMark)
         ) {
             enableElements(false);
             DatabaseAccess db = DatabaseAccess.getInstance(this);
@@ -60,9 +62,11 @@ public class RegisterActivity extends BaseActivity {
                 user.setLastName(getText(binding.etLName));
                 user.setPassword(getText(binding.etPassword));
                 user.setPhone(getText(binding.etPhone));
-                user.setCity(getText(binding.etCity));
-                user.setAddress(getText(binding.etAddress));
-                user.setNearest(getText(binding.etNearest));
+                user.setGovernorate(getText(binding.etGovernorate));
+                user.setNeighborhood(getText(binding.etNeighborhood));
+                user.setNavigational(getText(binding.etNavigationalMark));
+                user.setHouseNumber(getText(binding.etHouseNumber));
+                user.setPhone2(getText(binding.etPhone2));
 
                 db.insertUser(user);
                 Hawk.put(Constants.IS_LOGIN, true);
