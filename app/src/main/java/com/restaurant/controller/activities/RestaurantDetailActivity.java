@@ -3,18 +3,19 @@ package com.restaurant.controller.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.restaurant.R;
+import com.restaurant.controller.adapter.PopularAdapter;
 import com.restaurant.controller.adapter.ViewPagerAdapter;
 import com.restaurant.controller.fragment.MealsFragment;
 import com.restaurant.databinding.ActivityRestaurantDetailBinding;
 import com.restaurant.helpers.BaseActivity;
 import com.restaurant.helpers.Constants;
+import com.restaurant.model.Meals;
 import com.restaurant.model.Restaurant;
 
-import java.util.Objects;
+import java.util.ArrayList;
 
 public class RestaurantDetailActivity extends BaseActivity {
 
@@ -32,24 +33,7 @@ public class RestaurantDetailActivity extends BaseActivity {
     private void initView() {
         model = (Restaurant) getIntent().getSerializableExtra(Constants.TYPE_MODEL);
 
-        binding.appbar.addOnOffsetChangedListener((appBarLayout, offset) -> {
-            if (Math.abs(offset) == appBarLayout.getTotalScrollRange()) {
-                // Collapsed
-//                binding.collapsing.setTitle(model.getName());
-                binding.collapsing.setTitle("تفاصيل المطعم");
-            } else if (offset == 0) {
-                // Expanded
-                binding.collapsing.setTitle(" ");
-            } else {
-                // Somewhere in between
-            }
-        });
-        setSupportActionBar(binding.toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        binding.collapsing.setCollapsedTitleGravity(Gravity.START);
-        binding.collapsing.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
-        binding.collapsing.setStatusBarScrimColor(getResources().getColor(R.color.colorPrimary));
+        binding.imgBack.setOnClickListener(view -> onBackPressed());
 
         binding.title.setText(model.getName());
         binding.phone.setText(model.getPhone());
@@ -64,6 +48,7 @@ public class RestaurantDetailActivity extends BaseActivity {
         });
 
         initPager();
+        popular();
     }
 
     private void initPager() {
@@ -72,10 +57,24 @@ public class RestaurantDetailActivity extends BaseActivity {
         adapter.addFragment(MealsFragment.newInstance(model, 2), getString(R.string.appetizers));
         adapter.addFragment(MealsFragment.newInstance(model, 3), getString(R.string.drinks));
         adapter.addFragment(MealsFragment.newInstance(model, 4), getString(R.string.candy));
-
         binding.viewpager.setAdapter(adapter);
         binding.tab.setupWithViewPager(binding.viewpager);
 
+    }
+
+    private void popular() {
+        ArrayList<Meals> list = new ArrayList<>();
+        list.add(new Meals(1, "كلاسك برجر", "لحمة ، خس ، خيار ، صوص ، بندورة", "14",
+                "5 دقائق", 4f, R.drawable.borger));
+        list.add(new Meals(7, "اصابع دجاج", "لحمة ، خس ، دجاج ، صوص", "10",
+                "5 دقائق", 4f, R.drawable.chicken_fingers));
+        list.add(new Meals(11, "كوكا كولا", "زجاجة عصير صودا بطعم الكولا", "2",
+                "5 دقائق", 4f, R.drawable.cola));
+        list.add(new Meals(16, "كريب نوتيلا", "نوتيلا ، كريب", "10",
+                "5 دقائق", 4f, R.drawable.crepe));
+        PopularAdapter adapter = new PopularAdapter(this);
+        adapter.setList(list);
+        binding.recyclerView.setAdapter(adapter);
     }
 
     @Override
