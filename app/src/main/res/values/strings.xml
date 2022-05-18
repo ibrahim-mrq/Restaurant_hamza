@@ -26,7 +26,7 @@
     <string name="register_now">سجل الان</string>
     <string name="register">تسجيل جديد</string>
     <string name="password">كلمة المرور</string>
-    <string name="re_password">ناكيد كلمة المرور</string>
+    <string name="re_password">تاكيد كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
 
     <string name="full_name">الاسم الكامل</string>
