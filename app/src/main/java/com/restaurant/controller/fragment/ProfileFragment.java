@@ -5,11 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.orhanobut.hawk.Hawk;
+import com.restaurant.DB.DatabaseAccess;
 import com.restaurant.databinding.FragmentProfileBinding;
 import com.restaurant.helpers.BaseFragment;
 import com.restaurant.helpers.Constants;
@@ -53,9 +55,29 @@ public class ProfileFragment extends BaseFragment {
         binding.etNavigationalMark.setText(user.getNavigational());
         binding.etHouseNumber.setText(user.getHouseNumber());
 
-
         binding.btnUpdate.setOnClickListener(view -> {
+            DatabaseAccess db = DatabaseAccess.getInstance(getActivity());
+            db.open();
 
+            User model = new User();
+
+            model.setId(user.getId());
+            model.setFirstName(getText(binding.etFName));
+            model.setLastName(getText(binding.etLName));
+            model.setEmail(getText(binding.etEmail));
+            model.setPhone(getText(binding.etPhone));
+            model.setPassword(getText(binding.etPassword));
+            model.setPhone2(getText(binding.etPhone2));
+            model.setGovernorate(getText(binding.etGovernorate));
+            model.setNeighborhood(getText(binding.etNeighborhood));
+            model.setNavigational(getText(binding.etNavigationalMark));
+            model.setHouseNumber(getText(binding.etHouseNumber));
+
+            Log.e("response", "id = " + user.getId());
+            Log.e("response", "id = " + model.getId());
+
+            db.updateUser(model);
+            db.close();
         });
     }
 }

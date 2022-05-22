@@ -95,27 +95,6 @@ public class DatabaseAccess {
         database.delete(Database.CART_TB_NAME, "id=?", args);
     }
 
-    public ArrayList<Cart> getAllCart() {
-        ArrayList<Cart> models = new ArrayList<>();
-        Cursor c = database.rawQuery("SELECT * FROM " + Database.CART_TB_NAME, null);
-        if (c != null && c.moveToFirst()) {
-            do {
-                int id = c.getInt(c.getColumnIndex(Database.CART_COLUMN_ID));
-                String name = c.getString(c.getColumnIndex(Database.CART_COLUMN_NAME));
-                String ingredients = c.getString(c.getColumnIndex(Database.CART_COLUMN_INGREDIENTS));
-                String price = c.getString(c.getColumnIndex(Database.CART_COLUMN_PRICE));
-                int image = c.getInt(c.getColumnIndex(Database.CART_COLUMN_IMAGE));
-                int quantity = c.getInt(c.getColumnIndex(Database.CART_COLUMN_QUANTITY));
-                int userId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_USER_ID));
-                int productId = c.getInt(c.getColumnIndex(Database.CART_COLUMN_PRODUCT_ID));
-                Cart model = new Cart(id, name, ingredients, price, image, quantity, userId, productId);
-                models.add(model);
-            } while (c.moveToNext());
-            c.close();
-        }
-        return models;
-    }
-
     public ArrayList<Cart> getAllCartByUserId(int UserId) {
         ArrayList<Cart> models = new ArrayList<>();
         Cursor c = database.rawQuery("SELECT * FROM " + Database.CART_TB_NAME + " WHERE " + Database.CART_COLUMN_USER_ID
@@ -150,8 +129,7 @@ public class DatabaseAccess {
         cv.put(Database.ORDER_COLUMN_USER_NAME, model.getUserName());
         cv.put(Database.ORDER_COLUMN_USER_PHONE, model.getUserPhone());
         cv.put(Database.ORDER_COLUMN_DATE, model.getDate());
-//        cv.put(Database.ORDER_COLUMN_LIST_PRODUCT, model.getCarts());
-        long result = database.insert(Database.ORDER_TB_NAME, null, cv);
+        database.insert(Database.ORDER_TB_NAME, null, cv);
     }
 
     public boolean updateOrder(Order model) {
@@ -163,32 +141,9 @@ public class DatabaseAccess {
         values.put(Database.ORDER_COLUMN_USER_NAME, model.getUserName());
         values.put(Database.ORDER_COLUMN_USER_PHONE, model.getUserPhone());
         values.put(Database.ORDER_COLUMN_DATE, model.getDate());
-//        values.put(Database.ORDER_COLUMN_LIST_PRODUCT, model.getCarts());
         String[] args = {String.valueOf(model.getId())};
         int res = database.update(Database.ORDER_TB_NAME, values, "id=?", args);
         return res > 0;
-    }
-
-    public ArrayList<Order> getAllOrder() {
-        ArrayList<Order> models = new ArrayList<>();
-        Cursor c = database.rawQuery("SELECT * FROM " + Database.ORDER_TB_NAME, null);
-        if (c != null && c.moveToFirst()) {
-            do {
-                int id = c.getInt(c.getColumnIndex(Database.ORDER_COLUMN_ID));
-                String price = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_PRICE));
-                int quantity = c.getInt(c.getColumnIndex(Database.ORDER_COLUMN_QUANTITY));
-                int userId = c.getInt(c.getColumnIndex(Database.ORDER_COLUMN_USER_ID));
-                String userName = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_USER_NAME));
-                String userPhone = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_USER_PHONE));
-                String userEmail = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_USER_EMAIL));
-                String date = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_DATE));
-//                ArrayList<Cart> list = c.getInt(c.getColumnIndex(Database.ORDER_COLUMN_LIST_PRODUCT));
-                Order model = new Order(id, price, quantity, userId, userName, userPhone, userEmail, date);
-                models.add(model);
-            } while (c.moveToNext());
-            c.close();
-        }
-        return models;
     }
 
     public ArrayList<Order> getAllOrderByUserId(int UserId) {
@@ -224,7 +179,6 @@ public class DatabaseAccess {
         cv.put(Database.USER_COLUMN_EMAIL, model.getEmail());
         cv.put(Database.USER_COLUMN_PASSWORD, model.getPassword());
         cv.put(Database.USER_COLUMN_PHONE, model.getPhone());
-
         cv.put(Database.USER_COLUMN_PHONE_2, model.getPhone2());
         cv.put(Database.USER_COLUMN_GOVERNORATE, model.getGovernorate());
         cv.put(Database.USER_COLUMN_NEIGHBORHOOD, model.getNeighborhood());
@@ -234,23 +188,20 @@ public class DatabaseAccess {
         database.insert(Database.USER_TB_NAME, null, cv);
     }
 
-    public boolean updateUser(User model) {
+    public void updateUser(User model) {
         ContentValues values = new ContentValues();
         values.put(Database.USER_COLUMN_FIRST_NAME, model.getFirstName());
         values.put(Database.USER_COLUMN_LAST_NAME, model.getLastName());
         values.put(Database.USER_COLUMN_EMAIL, model.getEmail());
         values.put(Database.USER_COLUMN_PASSWORD, model.getPassword());
         values.put(Database.USER_COLUMN_PHONE, model.getPhone());
-
         values.put(Database.USER_COLUMN_PHONE_2, model.getPhone2());
         values.put(Database.USER_COLUMN_GOVERNORATE, model.getGovernorate());
         values.put(Database.USER_COLUMN_NEIGHBORHOOD, model.getNeighborhood());
         values.put(Database.USER_COLUMN_HOUSE_NUMBER, model.getHouseNumber());
         values.put(Database.USER_COLUMN_NAVIGATIONAL, model.getNavigational());
-
         String[] args = {String.valueOf(model.getId())};
-        int res = database.update(Database.USER_TB_NAME, values, "id=?", args);
-        return res > 0;
+        database.update(Database.USER_TB_NAME, values, "id=?", args);
     }
 
     public boolean checkUser(String email, String pass) {

@@ -11,7 +11,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FBE41A</color>
     <color name="background">#FFFFFFFF</color>
-<!--    <color name="background">#F0EEF5</color>-->
+    <color name="background2">#F0EEF5</color>
 
     <color name="pinky">#7660AA</color>
     <color name="grey">#ADB0B1</color>

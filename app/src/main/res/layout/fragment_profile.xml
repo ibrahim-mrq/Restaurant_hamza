@@ -40,7 +40,7 @@
                 android:id="@+id/et_f_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPersonName"
                 android:textAlignment="textStart"
@@ -68,7 +68,7 @@
                 android:id="@+id/et_l_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPersonName"
                 android:textAlignment="textStart"
@@ -96,7 +96,7 @@
                 android:id="@+id/et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="phone"
                 android:textAlignment="textStart"
@@ -124,7 +124,7 @@
                 android:id="@+id/et_phone2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="phone"
                 android:textAlignment="textStart"
@@ -152,7 +152,7 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textEmailAddress"
                 android:textAlignment="textStart"
@@ -181,7 +181,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPassword"
                 android:textAlignment="textStart"
@@ -210,7 +210,7 @@
                 android:id="@+id/et_governorate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPersonName"
                 android:textAlignment="textStart"
@@ -238,7 +238,7 @@
                 android:id="@+id/et_neighborhood"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPersonName"
                 android:textAlignment="textStart"
@@ -266,7 +266,7 @@
                 android:id="@+id/et_houseNumber"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPersonName"
                 android:textAlignment="textStart"
@@ -294,7 +294,7 @@
                 android:id="@+id/et_navigational_mark"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:enabled="false"
+              
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPersonName"
                 android:textAlignment="textStart"

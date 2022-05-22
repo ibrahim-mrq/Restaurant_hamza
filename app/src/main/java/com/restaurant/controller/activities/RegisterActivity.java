@@ -29,6 +29,7 @@ public class RegisterActivity extends BaseActivity {
 
     private void initView() {
         binding.appbar.tvTool.setText(getString(R.string.login));
+        binding.appbar.imgBack.setOnClickListener(view -> onBackPressed());
 
         binding.registerBtn.setOnClickListener(view -> {
             register();

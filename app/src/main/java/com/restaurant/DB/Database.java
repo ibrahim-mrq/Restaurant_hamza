@@ -43,7 +43,6 @@ public class Database extends SQLiteOpenHelper {
     public static final String USER_COLUMN_PHONE = "phone";
     public static final String USER_COLUMN_PHONE_2 = "phone_2";
     public static final String USER_COLUMN_PASSWORD = "password";
-
     public static final String USER_COLUMN_GOVERNORATE = "governorate";
     public static final String USER_COLUMN_NEIGHBORHOOD = "neighborhood";
     public static final String USER_COLUMN_HOUSE_NUMBER = "houseNumber";
