@@ -26,6 +26,7 @@ public class ProfileFragment extends BaseFragment {
     }
 
     FragmentProfileBinding binding;
+    DatabaseAccess db;
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
@@ -42,25 +43,26 @@ public class ProfileFragment extends BaseFragment {
     }
 
     private void initView() {
-        User user = Hawk.get(Constants.USER);
+        db = DatabaseAccess.getInstance(getActivity());
+        db.open();
+        User emails = Hawk.get(Constants.USER);
+        User user = db.getUser(emails.getEmail());
         binding.etFName.setText(user.getFirstName());
         binding.etLName.setText(user.getLastName());
         binding.etEmail.setText(user.getEmail());
         binding.etPhone.setText(user.getPhone());
         binding.etPassword.setText(user.getPassword());
-
         binding.etPhone2.setText(user.getPhone2());
         binding.etGovernorate.setText(user.getGovernorate());
         binding.etNeighborhood.setText(user.getNeighborhood());
         binding.etNavigationalMark.setText(user.getNavigational());
         binding.etHouseNumber.setText(user.getHouseNumber());
+        db.close();
 
         binding.btnUpdate.setOnClickListener(view -> {
             DatabaseAccess db = DatabaseAccess.getInstance(getActivity());
             db.open();
-
             User model = new User();
-
             model.setId(user.getId());
             model.setFirstName(getText(binding.etFName));
             model.setLastName(getText(binding.etLName));
@@ -72,12 +74,9 @@ public class ProfileFragment extends BaseFragment {
             model.setNeighborhood(getText(binding.etNeighborhood));
             model.setNavigational(getText(binding.etNavigationalMark));
             model.setHouseNumber(getText(binding.etHouseNumber));
-
-            Log.e("response", "id = " + user.getId());
-            Log.e("response", "id = " + model.getId());
-
             db.updateUser(model);
             db.close();
+            showAlert("", "تم تحديث الملف الشخصي بنجاح");
         });
     }
 }

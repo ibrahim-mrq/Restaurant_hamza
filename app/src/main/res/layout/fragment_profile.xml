@@ -40,7 +40,7 @@
                 android:id="@+id/et_f_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-              
+
                 android:fontFamily="@font/font_regular"
                 android:inputType="textPersonName"
                 android:textAlignment="textStart"
@@ -152,7 +152,7 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-              
+                android:enabled="false"
                 android:fontFamily="@font/font_regular"
                 android:inputType="textEmailAddress"
                 android:textAlignment="textStart"

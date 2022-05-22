@@ -160,7 +160,6 @@ public class DatabaseAccess {
                 String userPhone = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_USER_PHONE));
                 String userEmail = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_USER_EMAIL));
                 String date = c.getString(c.getColumnIndex(Database.ORDER_COLUMN_DATE));
-//                ArrayList<Cart> list = c.getInt(c.getColumnIndex(Database.ORDER_COLUMN_LIST_PRODUCT));
                 Order model = new Order(id, price, quantity, userId, userName, userPhone, userEmail, date);
                 models.add(model);
             }
@@ -192,7 +191,7 @@ public class DatabaseAccess {
         ContentValues values = new ContentValues();
         values.put(Database.USER_COLUMN_FIRST_NAME, model.getFirstName());
         values.put(Database.USER_COLUMN_LAST_NAME, model.getLastName());
-        values.put(Database.USER_COLUMN_EMAIL, model.getEmail());
+//        values.put(Database.USER_COLUMN_EMAIL, model.getEmail());
         values.put(Database.USER_COLUMN_PASSWORD, model.getPassword());
         values.put(Database.USER_COLUMN_PHONE, model.getPhone());
         values.put(Database.USER_COLUMN_PHONE_2, model.getPhone2());
@@ -227,13 +226,11 @@ public class DatabaseAccess {
                 String password = c.getString(c.getColumnIndex(Database.USER_COLUMN_PASSWORD));
                 String emails = c.getString(c.getColumnIndex(Database.USER_COLUMN_EMAIL));
                 String phone = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE));
-
                 String phone2 = c.getString(c.getColumnIndex(Database.USER_COLUMN_PHONE_2));
                 String governorate = c.getString(c.getColumnIndex(Database.USER_COLUMN_GOVERNORATE));
                 String neighborhood = c.getString(c.getColumnIndex(Database.USER_COLUMN_NEIGHBORHOOD));
                 String houseNumber = c.getString(c.getColumnIndex(Database.USER_COLUMN_HOUSE_NUMBER));
                 String navigational = c.getString(c.getColumnIndex(Database.USER_COLUMN_NAVIGATIONAL));
-
                 user = new User(id, f_name, l_name, emails, phone, phone2, password, governorate, neighborhood, houseNumber, navigational);
             } while (c.moveToNext());
             c.close();
