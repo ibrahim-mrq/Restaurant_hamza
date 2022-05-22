@@ -17,7 +17,6 @@ import java.util.*
 object Constants {
 
     const val TYPE_MODEL = "type_model"
-
     const val IS_LOGIN = "is_login"
     const val USER = "user"
     const val USER_ID = "user_id"
@@ -53,7 +52,5 @@ object Constants {
             .hideIcon()
             .show()
     }
-
-    const val LOCAL_CART_LIST = "local_cart_list"
 
 }

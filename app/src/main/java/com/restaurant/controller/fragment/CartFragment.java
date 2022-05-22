@@ -169,7 +169,6 @@ public class CartFragment extends Fragment {
         if (list.isEmpty()) {
             binding.statefulLayout.showEmpty();
         } else {
-            Hawk.put(Constants.LOCAL_CART_LIST, list);
             binding.statefulLayout.showContent();
         }
         double total = 0;
